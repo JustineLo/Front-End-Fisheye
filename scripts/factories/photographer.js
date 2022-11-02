@@ -1,38 +1,54 @@
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price } = data;
 
-    const picture = `../../assets/photographers/${portrait}`;
-
-    function getUserCardDOM() {
-        const article = document.createElement('article');
-
+    function displayUserPicture() {
+        const picture = `../../assets/photographers/${portrait}`;
         const img = document.createElement('img');
         img.setAttribute("src", picture)
+        return img;
+    }
 
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
+    function displayUserName() {
+        const nameElement = document.createElement('h2');
+        nameElement.textContent = name;
+        return nameElement;
+    }
 
-        const pDiv = document.createElement('div');
+    function displayUserLocation() {
+        const location = document.createElement('p');
+        location.textContent = `${city}, ${country}`;
+        return location;
+    }
 
-        const p1 = document.createElement('p');
-        p1.textContent = `${city}, ${country}`;
+    function displayUserTagline() {
+        const taglineElement = document.createElement('p');
+        taglineElement.textContent = tagline;
+        return taglineElement;
+    }
 
-        const p2 = document.createElement('p');
-        p2.textContent = tagline;
+    function displayUserPrice() {
+        const priceElement = document.createElement('p');
+        priceElement.textContent = `${price}€/jour`;
+        return priceElement;
+    }
 
-        const p3 = document.createElement('p');
-        p3.textContent = `${price}€/jour`;
+    function displayUserCardDOM() {
+        const a = document.createElement('a');
+        a.href = `./photographer.html?id=${data.id}`;
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(pDiv);
-        pDiv.appendChild(p1);
-        pDiv.appendChild(p2);
-        pDiv.appendChild(p3);
+        const article = document.createElement('article');
+        const infosDiv = document.createElement('div');
+
+        article.appendChild(a);
+        a.appendChild(displayUserPicture());
+        a.appendChild(displayUserName());
+        a.appendChild(infosDiv);
+        infosDiv.appendChild(displayUserLocation());
+        infosDiv.appendChild(displayUserTagline());
+        infosDiv.appendChild(displayUserPrice());
 
         return (article);
     }
 
-
-    return { name, picture, getUserCardDOM }
+    return { displayUserName, displayUserPicture, displayUserLocation, displayUserTagline, displayUserPrice, displayUserCardDOM }
 }
