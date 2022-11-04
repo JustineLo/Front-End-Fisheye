@@ -10,7 +10,7 @@ async function getPhotographer() {
     return response
 }
 
-async function getPictures() {
+async function getMedias() {
     const response = await fetch('/data/photographers.json')
         .then((response) => response.json())
         .then((data) => data.media)
@@ -28,36 +28,44 @@ async function displayHeader(nameDOM, locationDOM, taglineDOM, pictureDOM) {
     photographerPicture.appendChild(pictureDOM)
 }
 
-async function displayPictures(photographerName) {
-    const pictures = await getPictures()
-    const picturesSection = document.querySelector("#photograph-pictures");
-    pictures.forEach((picture) => {
-        const pictureDOM = displaySinglePicture(picture.image, photographerName)
-        picturesSection.appendChild(pictureDOM)
+async function displayMiniatures(medias) {
+    const mediaSection = document.getElementById("photograph-miniatures");
+    console.log(medias)
+    medias.forEach(async (media) => {
+        const mediaDOM = await displaySingleMedia(media)
+        mediaSection.appendChild(mediaDOM)
     })
 }
 
-function displaySinglePicture(pictureName, photographerName) {
-    const picture = `../../assets/images/${pictureName}`;
-    console.log(pictureName)
-    const pictureDOM = document.createElement('img');
-    pictureDOM.setAttribute("src", picture)
-    return pictureDOM;
+async function displaySingleMedia(media) {
+    if (media.image) {
+        const picture = `../../assets/images/${media.image}`;
+        const pictureDOM = document.createElement('img');
+        pictureDOM.setAttribute("src", picture)
+        return pictureDOM
+    } else if (media.video) {
+        const video = `../../assets/videos/${media.video}`;
+        const videoDOM = document.createElement('source');
+        videoDOM.setAttribute("src", video)
+        videoDOM.setAttribute("type", "video/mp4")
+        return videoDOM
+    }
 }
 
 
 
 async function init() {
     const photographer = await getPhotographer()
-    const nameDOM = photographerFactory(photographer).displayUserName()
-    const locationDOM = photographerFactory(photographer).displayUserLocation()
-    const taglineDOM = photographerFactory(photographer).displayUserTagline()
-    const pictureDOM = photographerFactory(photographer).displayUserPicture()
+    const myPhotographe = photographerFactory(photographer)
+    const nameDOM = myPhotographe.displayUserName()
+    const locationDOM = myPhotographe.displayUserLocation()
+    const taglineDOM = myPhotographe.displayUserTagline()
+    const pictureDOM = myPhotographe.displayUserPicture()
 
-    const picture = await getPictures()
+    const medias = await getMedias()
 
     displayHeader(nameDOM, locationDOM, taglineDOM, pictureDOM)
-    displayPictures(photographer.name)
+    displayMiniatures(medias)
 }
 
 init()
