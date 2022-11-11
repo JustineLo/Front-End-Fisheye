@@ -52,7 +52,7 @@ export class Image {
 
     displayImage() {
         const pictureCard = document.createElement('div');
-        pictureCard.setAttribute("class", "picture-card");
+        pictureCard.setAttribute("class", "media-card");
         pictureCard.innerHTML = `
             <img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />
             <div class="picture-infos">
@@ -72,7 +72,7 @@ export class Video {
 
     displayVideo() {
         const videoCard = document.createElement('div');
-        videoCard.setAttribute("class", "picture-card");
+        videoCard.setAttribute("class", "media-card");
         videoCard.innerHTML = `
             <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}" />
             <div class="picture-infos">

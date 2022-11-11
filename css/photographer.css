@@ -74,12 +74,12 @@ main {
     gap: 5%;
 }
 
-.picture-card {
+.media-card {
     width: 25%;
     height: 300px;
 }
 
-.picture-card img,
+.media-card img,
 video {
     width: 100%;
     height: calc(100% - 50px);
