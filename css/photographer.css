@@ -1,18 +1,28 @@
+:root {
+    --primary: rgba(144, 28, 28, 1);
+    --secondary: #D3573C;
+    --lightgrey: #FAFAFA;
+    --darkgrey: #525252;
+}
+
 #contact_modal {
     display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
+main {
     margin: 0 100px;
+}
+
+#photograph-header {
+    background-color: var(--lightgrey);
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 100px;
 }
 
-.photograph-header a {
+#photograph-header a {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -22,40 +32,96 @@
     text-decoration: none;
 }
 
-.photograph-header div {
+#photograph-header div {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.photograph-header h2 {
-    color: #D3573C;
+.photographer-infos h2 {
+    color: var(--secondary);
     font-size: 36px;
     margin: 0;
 }
 
-.photograph-header img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.photograph-header div p:nth-of-type(1) {
-    color: rgba(144, 28, 28, 1);
+.photographer-infos div p:nth-of-type(1) {
+    color: var(--primary);
     font-size: 13px;
 }
 
-.photograph-header div p:nth-of-type(2) {
-    color: rgba(117, 117, 117, 1);
+.photographer-infos div p:nth-of-type(2) {
+    color: var(--tertiary);
     font-size: 9px;
 }
 
-#photograph-miniatures img {
-    width: 200px;
-    height: 200px;
+#dropdown-section {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    font-weight: bold;
 }
 
+.dropdown {
+    all: unset;
+}
+
+#photograph-miniatures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: var(--primary);
+    width: 100%;
+    gap: 5%;
+}
+
+.picture-card {
+    width: 25%;
+    height: 300px;
+}
+
+.picture-card img,
+video {
+    width: 100%;
+    height: calc(100% - 50px);
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.picture-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.picture-infos h3 {
+    margin: 0;
+}
+
+.picture-likes {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    background-color: var(--secondary);
+    padding: 15px 2%;
+    font-weight: bolder;
+}
+
+.total-likes {
+    display: flex;
+    gap: 10px;
+}
 
 .contact_button {
     font-size: 20px;
@@ -65,14 +131,14 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--primary);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: var(--secondary);
     width: 50%;
     display: flex;
     flex-direction: column;

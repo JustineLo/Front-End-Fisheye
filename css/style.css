@@ -1,5 +1,11 @@
 @import url("photographer.css");
 
+:root {
+    --primary: rgba(144, 28, 28, 1);
+    --secondary: #D3573C;
+    --tertiary: rgba(117, 117, 117, 1);
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -15,7 +21,7 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: var(--primary);
     margin-right: 100px;
 }
 
@@ -28,14 +34,22 @@ p {
     margin-left: 100px;
 }
 
-.photographer_section {
+.avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+#photographer-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article a {
+#photographer-section article a {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -45,36 +59,29 @@ p {
     text-decoration: none;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
+#photographer-section article h2 {
+    color: var(--secondary);
     font-size: 36px;
     margin: 0;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.photographer_section article div {
+.photographer-card-infos {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
 }
 
-.photographer_section div p:nth-of-type(1) {
-    color: rgba(144, 28, 28, 1);
+.photographer-card-infos p:nth-of-type(1) {
+    color: var(--primary);
     font-size: 13px;
 }
 
-.photographer_section div p:nth-of-type(2) {
+.photographer-card-infos p:nth-of-type(2) {
     font-size: 10px;
 }
 
-.photographer_section div p:nth-of-type(3) {
-    color: rgba(117, 117, 117, 1);
+.photographer-card-infos p:nth-of-type(3) {
+    color: var(--tertiary);
     font-size: 9px;
 }
