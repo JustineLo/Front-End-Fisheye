@@ -53,40 +53,36 @@ async function displayDropdown(dropdownOptions) {
 
     dropdownSection.appendChild(dropdownLabelDOM)
     dropdownSection.appendChild(dropdownDOM)
+
+    dropdownDOM.addEventListener("change", async () => {
+        handleSorting(dropdownDOM)
+    })
+
 }
 
-async function handleSorting() {
-    const dropdown = document.getElementById("dropdown");
-    const mediaSection = document.getElementById("photograph-miniatures");
+async function handleSorting(dropdownDOM) {
 
-    dropdown.addEventListener("change", async () => {
-        const medias = await getMedias();
-        mediaSection.innerHTML = "";
-        console.log("changed");
+    if (dropdownDOM.value == "Popularité") {
+        mediaList.sort((a, b) => b.likes - a.likes)
+    } else if (dropdownDOM.value == "Date") {
+        mediaList.sort((a, b) => new Date(b.date) - new Date(a.date))
+    } else if (dropdownDOM.value == "Titre") {
+        mediaList.sort((a, b) => a.title.localeCompare(b.title))
+    }
+    displayMiniatures(mediaList);
 
-        if (dropdown.value == "Popularité") {
-            medias.sort((a, b) => b.likes - a.likes)
-        } else if (dropdown.value == "Date") {
-            medias.sort((a, b) => new Date(b.date) - new Date(a.date))
-        } else if (dropdown.value == "Titre") {
-            medias.sort((a, b) => a.title.localeCompare(b.title))
-        }
-
-        displayMiniatures(medias);
-    })
 }
 
 async function displayMiniatures(medias) {
     const mediaSection = document.getElementById("photograph-miniatures");
+    mediaSection.innerHTML = "";
     medias.forEach(async (media) => {
         if (media.image) {
             const image = new Image(media);
-            mediaList.push(image.media)
             mediaSection.appendChild(image.displayImage())
             image.handleLikes()
         } else if (media.video) {
             const video = new Video(media);
-            mediaList.push(video.media)
             mediaSection.appendChild(video.displayVideo())
         }
     })
@@ -126,11 +122,25 @@ async function init() {
     const photographer = new Photographer(photographerData)
 
     const medias = await getMedias();
+    initMediaList(medias);
 
     displayHeader(photographer);
     displayDropdown(["Popularité", "Date", "Titre"]);
-    displayMiniatures(medias);
+    displayMiniatures(mediaList);
     displayStickyInfos(photographer);
+}
+
+async function initMediaList(medias) {
+    medias.forEach((media) => {
+        if (media.image) {
+            const image = new Image(media);
+            mediaList.push(image.media)
+        } else if (media.video) {
+            const video = new Video(media);
+            mediaList.push(video.media)
+        }
+    })
+
 }
 
 init()
