@@ -1,3 +1,5 @@
+import { updateTotalLikesDOM } from "./photographer.js";
+
 export class Photographer {
     constructor(data) {
         this.name = data.name;
@@ -53,14 +55,28 @@ export class Image {
     displayImage() {
         const pictureCard = document.createElement('div');
         pictureCard.setAttribute("class", "media-card");
+
         pictureCard.innerHTML = `
             <img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />
             <div class="picture-infos">
                 <h3>${this.media.title}</h3>
-                <p class="picture-likes">${this.media.likes} <i class="fas fa-heart"></i></p>
+                <p class="picture-likes">
+                    <span id="likes-number-${this.media.id}">${this.media.likes}</span>
+                    <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
+                </p>
             </div>
         `
         return pictureCard
+    }
+
+    handleLikes() {
+        const clickHeart = document.getElementById(`heart-icon-${this.media.id}`);
+
+        clickHeart.addEventListener("click", async () => {
+            this.media.likes++
+            document.getElementById(`likes-number-${this.media.id}`).innerHTML = this.media.likes;
+            updateTotalLikesDOM();
+        })
     }
 
 }

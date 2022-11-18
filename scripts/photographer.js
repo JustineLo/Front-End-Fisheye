@@ -3,6 +3,8 @@ import { Photographer, Image, Video } from './classes.js'
 let params = (new URL(document.location)).searchParams;
 let id = params.get('id');
 
+export let mediaList = [];
+
 async function getPhotographerData() {
     const response = await fetch('/data/photographers.json')
         .then((response) => response.json())
@@ -53,27 +55,60 @@ async function displayDropdown(dropdownOptions) {
     dropdownSection.appendChild(dropdownDOM)
 }
 
+async function handleSorting() {
+    const dropdown = document.getElementById("dropdown");
+    const mediaSection = document.getElementById("photograph-miniatures");
+
+    dropdown.addEventListener("change", async () => {
+        const medias = await getMedias();
+        mediaSection.innerHTML = "";
+        console.log("changed");
+
+        if (dropdown.value == "Popularité") {
+            medias.sort((a, b) => b.likes - a.likes)
+        } else if (dropdown.value == "Date") {
+            medias.sort((a, b) => new Date(b.date) - new Date(a.date))
+        } else if (dropdown.value == "Titre") {
+            medias.sort((a, b) => a.title.localeCompare(b.title))
+        }
+
+        displayMiniatures(medias);
+    })
+}
+
 async function displayMiniatures(medias) {
     const mediaSection = document.getElementById("photograph-miniatures");
     medias.forEach(async (media) => {
         if (media.image) {
             const image = new Image(media);
+            mediaList.push(image.media)
             mediaSection.appendChild(image.displayImage())
+            image.handleLikes()
         } else if (media.video) {
             const video = new Video(media);
+            mediaList.push(video.media)
             mediaSection.appendChild(video.displayVideo())
         }
     })
 }
 
-async function displayStickyInfos(photographer) {
-    const footer = document.querySelector("footer");
-    const medias = await getMedias();
+export async function getTotalLikes() {
     let totalLikes = 0;
-    medias.forEach((media) => {
+    mediaList.forEach((media) => {
         totalLikes += media.likes;
     })
+    return totalLikes;
+}
 
+export async function updateTotalLikesDOM() {
+    const totalLikesDOM = document.getElementById("total-likes-number");
+    const totalLikes = await getTotalLikes();
+    totalLikesDOM.innerHTML = totalLikes;
+}
+
+async function displayStickyInfos(photographer) {
+    const footer = document.querySelector("footer");
+    const totalLikes = await getTotalLikes();
 
     footer.innerHTML = `
         <span class="total-likes">
@@ -96,7 +131,6 @@ async function init() {
     displayDropdown(["Popularité", "Date", "Titre"]);
     displayMiniatures(medias);
     displayStickyInfos(photographer);
-
 }
 
 init()
