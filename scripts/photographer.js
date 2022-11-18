@@ -84,6 +84,7 @@ async function displayMiniatures(medias) {
         } else if (media.video) {
             const video = new Video(media);
             mediaSection.appendChild(video.displayVideo())
+            video.handleLikes()
         }
     })
 }

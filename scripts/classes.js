@@ -71,7 +71,6 @@ export class Image {
 
     handleLikes() {
         const clickHeart = document.getElementById(`heart-icon-${this.media.id}`);
-
         clickHeart.addEventListener("click", async () => {
             this.media.likes++
             document.getElementById(`likes-number-${this.media.id}`).innerHTML = this.media.likes;
@@ -90,13 +89,26 @@ export class Video {
         const videoCard = document.createElement('div');
         videoCard.setAttribute("class", "media-card");
         videoCard.innerHTML = `
-            <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}" />
+            <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>
             <div class="picture-infos">
                 <h3>${this.media.title}</h3>
-                <p class="picture-likes">${this.media.likes} <i class="fas fa-heart"></i></p>
+                <p class="picture-likes">
+                    <span id="likes-number-${this.media.id}">${this.media.likes}</span>
+                    <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
+                </p>
             </div>
         `
         return videoCard
+    }
+
+    handleLikes() {
+        const clickHeart = document.getElementById(`heart-icon-${this.media.id}`);
+
+        clickHeart.addEventListener("click", async () => {
+            this.media.likes++
+            document.getElementById(`likes-number-${this.media.id}`).innerHTML = this.media.likes;
+            updateTotalLikesDOM();
+        })
     }
 
 }
