@@ -33,9 +33,27 @@ async function displayHeader(photographer) {
             ${photographer.getUserTaglineDOM()}
            
         </div>
-        <button class="contact_button">Contactez-moi</button>
+        <button id="contact_button">Contactez-moi</button>
         ${photographer.getUserPictureDOM()}
     `
+
+    initModal();
+}
+
+function initModal() {
+    const modalBtn = document.getElementById("contact_button");
+    const btnClose = document.getElementById("contact_close");
+
+    modalBtn.addEventListener("click", () => {
+        const modal = document.getElementById("contact_modal");
+        console.log(modal);
+        modal.style.display = "block";
+    })
+
+    btnClose.addEventListener("click", () => {
+        const modal = document.getElementById("contact_modal");
+        modal.style.display = "none";
+    })
 }
 
 async function displayDropdown(dropdownOptions) {
