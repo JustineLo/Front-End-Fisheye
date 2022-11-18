@@ -31,18 +31,17 @@ async function displayHeader(photographer) {
             ${photographer.getUserNameDOM()}
             ${photographer.getUserLocationDOM()}
             ${photographer.getUserTaglineDOM()}
-           
         </div>
         <button id="contact_button">Contactez-moi</button>
         ${photographer.getUserPictureDOM()}
     `
-
     initModal();
 }
 
 function initModal() {
     const modalBtn = document.getElementById("contact_button");
     const btnClose = document.getElementById("contact_close");
+    const btnSubmit = document.getElementById("contact_submit");
 
     modalBtn.addEventListener("click", () => {
         const modal = document.getElementById("contact_modal");
@@ -54,7 +53,20 @@ function initModal() {
         const modal = document.getElementById("contact_modal");
         modal.style.display = "none";
     })
+
+
+    btnSubmit.addEventListener("click", (event) => {
+        event.preventDefault();
+        const data = {
+            firstName: document.getElementById("contact_firstName").value,
+            lastName: document.getElementById("contact_lastName").value,
+            email: document.getElementById("contact_email").value,
+            message: document.getElementById("contact_message").value
+        }
+        console.log(data)
+    })
 }
+
 
 async function displayDropdown(dropdownOptions) {
     const dropdownSection = document.getElementById("dropdown-section");

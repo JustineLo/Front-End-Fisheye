@@ -28,10 +28,16 @@
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="contact_firstName">Prénom</label>
+          <input id="contact_firstName" name="contact_firstName" />
+          <label for="contact_lastName">Nom</label>
+          <input id="contact_lastName" name="contact_lastName" />
+          <label for="contact_email">Email</label>
+          <input id="contact_email" name="contact_email" />
+          <label for="contact_message">Message</label>
+          <textarea id="contact_message" name="contact_message" rows="5"></textarea>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button id="contact_submit">Envoyer</button>
       </form>
     </div>
   </div>
