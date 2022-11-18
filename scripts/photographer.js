@@ -68,10 +68,16 @@ async function displayMiniatures(medias) {
 
 async function displayStickyInfos(photographer) {
     const footer = document.querySelector("footer");
+    const medias = await getMedias();
+    let totalLikes = 0;
+    medias.forEach((media) => {
+        totalLikes += media.likes;
+    })
+
 
     footer.innerHTML = `
         <span class="total-likes">
-            <p id="total-likes-number">0</p>
+            <p id="total-likes-number">${totalLikes}</p>
             <i class="fas fa-heart"></i>
         </span>
         <span class="price">
