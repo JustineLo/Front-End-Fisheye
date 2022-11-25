@@ -2,9 +2,12 @@
 
 :root {
     --primary: rgba(144, 28, 28, 1);
-    --secondary: #D3573C;
-    --tertiary: rgba(117, 117, 117, 1);
+    /* --secondary: #D3573C; */
+    --secondary: rgba(219, 136, 118, 1);
+    --lightgrey: #FAFAFA;
+    --darkgrey: #525252;
 }
+
 
 body {
     font-family: "DM Sans", sans-serif;

@@ -64,6 +64,7 @@ function initModal() {
             message: document.getElementById("contact_message").value
         }
         console.log(data)
+
     })
 }
 
