@@ -170,9 +170,9 @@ async function handleMediaModalNavigation(medias) {
 
         if (nextMedia.image) {
             modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
-        // } else if (nextMedia.video) {
-        //     modalContent.innerHTML = `<video controls src="/../../assets/images/${nextMedia.video}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
-        // }
+        } else if (nextMedia.video) {
+            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
+        }
         
     })
 

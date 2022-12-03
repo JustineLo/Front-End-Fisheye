@@ -121,6 +121,7 @@ export class Video {
         videoButton.addEventListener("click", () => {
             const modal = document.getElementById("media_modal");
             modal.style.display = "block";
+            displayModalMedia(videoButton);
         })
 
         return videoCard
