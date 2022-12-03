@@ -146,7 +146,7 @@ async function displayStickyInfos(photographer) {
     `
 }
 
-async function handleMediaModalNavigation(medias) {
+async function handleMediaModalNavigation(mediaList) {
     const modal = document.getElementById("media_modal");
     const modalContent = document.getElementById("middle_part");
     const modalClose = document.getElementById("close_button");
@@ -165,7 +165,6 @@ async function handleMediaModalNavigation(medias) {
             nextMedia = mediaList[0];
         } else {
             nextMedia = mediaList[currentMediaIndex + 1];
-            console.log(currentMediaIndex);
         }
 
         if (nextMedia.image) {
@@ -173,14 +172,23 @@ async function handleMediaModalNavigation(medias) {
         } else if (nextMedia.video) {
             modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
         }
-        
     })
 
     modalPrev.addEventListener("click", () => {
-        const currentMedia = modalContent.querySelector(".media");
-        const currentMediaIndex = mediaList.indexOf(currentMedia);
-        const prevMedia = mediaList[currentMediaIndex - 1];
-        displayModalContent(prevMedia);
+        const currentMediaId = modalContent.firstChild.getAttribute("id");
+        const currentMediaIndex = mediaList.findIndex(media => media.id == currentMediaId);
+        let nextMedia = mediaList[0]
+        if (currentMediaIndex == 0) {
+            nextMedia = mediaList[mediaList.length - 1];
+        } else {
+            nextMedia = mediaList[currentMediaIndex - 1];
+        }
+
+        if (nextMedia.image) {
+            modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
+        } else if (nextMedia.video) {
+            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
+        }
     })
 }
 

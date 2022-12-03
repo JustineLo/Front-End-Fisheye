@@ -74,7 +74,7 @@ export class Image {
 
         pictureButton.addEventListener("click", (event) => {
             const modal = document.getElementById("media_modal");
-            modal.style.display = "block";
+            modal.style.display = "flex";
             displayModalMedia(pictureButton);
         })
 
@@ -120,7 +120,7 @@ export class Video {
 
         videoButton.addEventListener("click", () => {
             const modal = document.getElementById("media_modal");
-            modal.style.display = "block";
+            modal.style.display = "flex";
             displayModalMedia(videoButton);
         })
 
