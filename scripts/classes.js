@@ -1,4 +1,4 @@
-import { updateTotalLikesDOM } from "./photographer.js";
+import { mediaList, updateTotalLikesDOM } from "./photographer.js";
 
 export class Photographer {
     constructor(data) {
@@ -58,7 +58,7 @@ export class Image {
 
         const pictureButton = document.createElement('button');
         pictureButton.setAttribute("class", "media-button");
-        pictureButton.innerHTML = `<img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />`
+        pictureButton.innerHTML = `<img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" id="${this.media.id}" />`
 
         const pictureInfos = document.createElement('div');
         pictureInfos.setAttribute("class", "picture-infos");
@@ -72,9 +72,10 @@ export class Image {
         pictureCard.appendChild(pictureButton);
         pictureCard.appendChild(pictureInfos);
 
-        pictureButton.addEventListener("click", () => {
+        pictureButton.addEventListener("click", (event) => {
             const modal = document.getElementById("media_modal");
             modal.style.display = "block";
+            displayModalMedia(pictureButton);
         })
 
         return pictureCard
@@ -103,7 +104,7 @@ export class Video {
 
         const videoButton = document.createElement('button');
         videoButton.setAttribute("class", "media-button");
-        videoButton.innerHTML = `<video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>`
+        videoButton.innerHTML = `<video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}" id="${this.media.id}"></video>`
 
         const videoInfos = document.createElement('div');
         videoInfos.setAttribute("class", "picture-infos");
@@ -135,4 +136,9 @@ export class Video {
         })
     }
 
+}
+
+export async function displayModalMedia(pictureButton) {
+    const modal = document.getElementById("middle_part");
+    modal.innerHTML = pictureButton.innerHTML;
 }

@@ -146,17 +146,56 @@ async function displayStickyInfos(photographer) {
     `
 }
 
+async function handleMediaModalNavigation(medias) {
+    const modal = document.getElementById("media_modal");
+    const modalContent = document.getElementById("middle_part");
+    const modalClose = document.getElementById("close_button");
+    const modalNext = document.getElementById("next_button");
+    const modalPrev = document.getElementById("prev_button");
+
+    modalClose.addEventListener("click", () => {
+        modal.style.display = "none";
+    })
+
+    modalNext.addEventListener("click", () => {
+        const currentMediaId = modalContent.firstChild.getAttribute("id");
+        const currentMediaIndex = mediaList.findIndex(media => media.id == currentMediaId);
+        let nextMedia = mediaList[0]
+        if (currentMediaIndex == mediaList.length - 1) {
+            nextMedia = mediaList[0];
+        } else {
+            nextMedia = mediaList[currentMediaIndex + 1];
+            console.log(currentMediaIndex);
+        }
+
+        if (nextMedia.image) {
+            modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
+        // } else if (nextMedia.video) {
+        //     modalContent.innerHTML = `<video controls src="/../../assets/images/${nextMedia.video}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
+        // }
+        
+    })
+
+    modalPrev.addEventListener("click", () => {
+        const currentMedia = modalContent.querySelector(".media");
+        const currentMediaIndex = mediaList.indexOf(currentMedia);
+        const prevMedia = mediaList[currentMediaIndex - 1];
+        displayModalContent(prevMedia);
+    })
+}
+
+
 async function init() {
     const photographerData = await getPhotographerData()
     const photographer = new Photographer(photographerData)
 
     const medias = await getMedias();
     initMediaList(medias);
-
     displayHeader(photographer);
     displayDropdown(["Popularité", "Date", "Titre"]);
     displayMiniatures(mediaList);
     displayStickyInfos(photographer);
+    handleMediaModalNavigation(mediaList);
 }
 
 async function initMediaList(medias) {
