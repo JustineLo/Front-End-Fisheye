@@ -35,10 +35,10 @@ async function displayHeader(photographer) {
         <button id="contact_button">Contactez-moi</button>
         ${photographer.getUserPictureDOM()}
     `
-    initModal();
+    initContactModal();
 }
 
-function initModal() {
+function initContactModal() {
     const modalBtn = document.getElementById("contact_button");
     const btnClose = document.getElementById("contact_close");
     const btnSubmit = document.getElementById("contact_submit");
@@ -67,7 +67,6 @@ function initModal() {
 
     })
 }
-
 
 async function displayDropdown(dropdownOptions) {
     const dropdownSection = document.getElementById("dropdown-section");
@@ -101,7 +100,6 @@ async function handleSorting(dropdownDOM) {
         mediaList.sort((a, b) => a.title.localeCompare(b.title))
     }
     displayMiniatures(mediaList);
-
 }
 
 async function displayMiniatures(medias) {
@@ -117,6 +115,37 @@ async function displayMiniatures(medias) {
             mediaSection.appendChild(video.displayVideo())
             video.handleLikes()
         }
+    })
+}
+
+
+function initMediaModal() {
+    const modalBtn = document.getElementById("");
+    const btnClose = document.getElementById("contact_close");
+    const btnSubmit = document.getElementById("contact_submit");
+
+    modalBtn.addEventListener("click", () => {
+        const modal = document.getElementById("contact_modal");
+        console.log(modal);
+        modal.style.display = "block";
+    })
+
+    btnClose.addEventListener("click", () => {
+        const modal = document.getElementById("contact_modal");
+        modal.style.display = "none";
+    })
+
+
+    btnSubmit.addEventListener("click", (event) => {
+        event.preventDefault();
+        const data = {
+            firstName: document.getElementById("contact_firstName").value,
+            lastName: document.getElementById("contact_lastName").value,
+            email: document.getElementById("contact_email").value,
+            message: document.getElementById("contact_message").value
+        }
+        console.log(data)
+
     })
 }
 
@@ -176,3 +205,4 @@ async function initMediaList(medias) {
 }
 
 init()
+initMediaModal()

@@ -57,7 +57,9 @@ export class Image {
         pictureCard.setAttribute("class", "media-card");
 
         pictureCard.innerHTML = `
-            <img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />
+            <button class="media-button">
+                <img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />
+            </button>
             <div class="picture-infos">
                 <h3>${this.media.title}</h3>
                 <p class="picture-likes">
@@ -89,7 +91,9 @@ export class Video {
         const videoCard = document.createElement('div');
         videoCard.setAttribute("class", "media-card");
         videoCard.innerHTML = `
-            <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>
+            <button class="media-button">
+                <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>
+            </button>
             <div class="picture-infos">
                 <h3>${this.media.title}</h3>
                 <p class="picture-likes">
