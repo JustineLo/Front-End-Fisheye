@@ -69,7 +69,10 @@ main {
 }
 
 .media-button {
-    all:unset;
+    background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
     width: 100%;
     height: calc(100% - 50px);
 }

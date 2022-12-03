@@ -45,7 +45,6 @@ function initContactModal() {
 
     modalBtn.addEventListener("click", () => {
         const modal = document.getElementById("contact_modal");
-        console.log(modal);
         modal.style.display = "block";
     })
 
@@ -118,37 +117,6 @@ async function displayMiniatures(medias) {
     })
 }
 
-
-function initMediaModal() {
-    const modalBtn = document.getElementById("");
-    const btnClose = document.getElementById("contact_close");
-    const btnSubmit = document.getElementById("contact_submit");
-
-    modalBtn.addEventListener("click", () => {
-        const modal = document.getElementById("contact_modal");
-        console.log(modal);
-        modal.style.display = "block";
-    })
-
-    btnClose.addEventListener("click", () => {
-        const modal = document.getElementById("contact_modal");
-        modal.style.display = "none";
-    })
-
-
-    btnSubmit.addEventListener("click", (event) => {
-        event.preventDefault();
-        const data = {
-            firstName: document.getElementById("contact_firstName").value,
-            lastName: document.getElementById("contact_lastName").value,
-            email: document.getElementById("contact_email").value,
-            message: document.getElementById("contact_message").value
-        }
-        console.log(data)
-
-    })
-}
-
 export async function getTotalLikes() {
     let totalLikes = 0;
     mediaList.forEach((media) => {
@@ -205,4 +173,3 @@ async function initMediaList(medias) {
 }
 
 init()
-initMediaModal()

@@ -56,20 +56,31 @@ export class Image {
         const pictureCard = document.createElement('div');
         pictureCard.setAttribute("class", "media-card");
 
-        pictureCard.innerHTML = `
-            <button class="media-button">
-                <img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />
-            </button>
-            <div class="picture-infos">
-                <h3>${this.media.title}</h3>
-                <p class="picture-likes">
-                    <span id="likes-number-${this.media.id}">${this.media.likes}</span>
-                    <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
-                </p>
-            </div>
+        const pictureButton = document.createElement('button');
+        pictureButton.setAttribute("class", "media-button");
+        pictureButton.innerHTML = `<img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" />`
+
+        const pictureInfos = document.createElement('div');
+        pictureInfos.setAttribute("class", "picture-infos");
+        pictureInfos.innerHTML = `<h3>${this.media.title}</h3>
+            <p class="picture-likes">
+                <span id="likes-number-${this.media.id}">${this.media.likes}</span>
+                <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
+            </p>
         `
+
+        pictureCard.appendChild(pictureButton);
+        pictureCard.appendChild(pictureInfos);
+
+        pictureButton.addEventListener("click", () => {
+            console.log("click");
+            const modal = document.getElementById("media_modal");
+            modal.style.display = "block";
+        })
+
         return pictureCard
     }
+        
 
     handleLikes() {
         const clickHeart = document.getElementById(`heart-icon-${this.media.id}`);
