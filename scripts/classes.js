@@ -73,7 +73,6 @@ export class Image {
         pictureCard.appendChild(pictureInfos);
 
         pictureButton.addEventListener("click", () => {
-            console.log("click");
             const modal = document.getElementById("media_modal");
             modal.style.display = "block";
         })
@@ -101,18 +100,28 @@ export class Video {
     displayVideo() {
         const videoCard = document.createElement('div');
         videoCard.setAttribute("class", "media-card");
-        videoCard.innerHTML = `
-            <button class="media-button">
-                <video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>
-            </button>
-            <div class="picture-infos">
-                <h3>${this.media.title}</h3>
-                <p class="picture-likes">
-                    <span id="likes-number-${this.media.id}">${this.media.likes}</span>
-                    <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
-                </p>
-            </div>
+
+        const videoButton = document.createElement('button');
+        videoButton.setAttribute("class", "media-button");
+        videoButton.innerHTML = `<video src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}"></video>`
+
+        const videoInfos = document.createElement('div');
+        videoInfos.setAttribute("class", "picture-infos");
+        videoInfos.innerHTML = `<h3>${this.media.title}</h3>
+            <p class="picture-likes">
+                <span id="likes-number-${this.media.id}">${this.media.likes}</span>
+                <i id="heart-icon-${this.media.id}" class="fas fa-heart"></i>
+            </p>
         `
+
+        videoCard.appendChild(videoButton);
+        videoCard.appendChild(videoInfos);
+
+        videoButton.addEventListener("click", () => {
+            const modal = document.getElementById("media_modal");
+            modal.style.display = "block";
+        })
+
         return videoCard
     }
 
