@@ -206,7 +206,9 @@ async function handleMediaModalButtons(mediaList) {
             <div class="picture-infos">${nextMedia.title}</div>
             `
         } else if (nextMedia.video) {
-            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>
+            modalContent.innerHTML = `<video controls id="${nextMedia.id}">
+            <source src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}"></source>
+            </video>
             <div class="picture-infos">${nextMedia.title}</div>`
         }
     }
@@ -239,7 +241,6 @@ async function initMediaList(medias) {
             mediaList.push(video.media)
         }
     })
-
 }
 
 init()

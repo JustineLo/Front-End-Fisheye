@@ -73,7 +73,7 @@ export class Image {
         pictureCard.appendChild(pictureInfos);
 
         pictureButton.addEventListener("click", (event) => {
-            displayModalMedia(pictureButton);
+            displayModalMedia(pictureButton.firstChild);
         })
 
         return pictureCard
@@ -119,7 +119,11 @@ export class Video {
         videoButton.addEventListener("click", () => {
             const modal = document.getElementById("media_modal");
             modal.style.display = "flex";
-            displayModalMedia(videoButton);
+            const video = document.createElement('video');
+            video.setAttribute("id", this.media.id);
+            video.controls = true;
+            video.innerHTML = `<source src="/../../assets/videos/${this.media.video}" type="video/mp4" alt="${this.media.title}" id="${this.media.id}"></source>`
+            displayModalMedia(video);
         })
 
         return videoCard
@@ -137,11 +141,10 @@ export class Video {
 
 }
 
-export async function displayModalMedia(pictureButton) {
+export async function displayModalMedia(mediaDOM) {
     const modal = document.getElementById("media_modal");
     modal.style.display = "flex";
     const middlePart = document.getElementById("middle_part");
-    const currentMedia = mediaList.find(media => media.id == pictureButton.firstChild.id);
-    middlePart.innerHTML = pictureButton.innerHTML + `<div class="media-title">${currentMedia.title}</div>`;
-    
+    const currentMedia = mediaList.find(media => media.id == mediaDOM.getAttribute("id"));
+    middlePart.innerHTML = mediaDOM.outerHTML + `<div class="media-title">${currentMedia.title}</div>`;
 }
