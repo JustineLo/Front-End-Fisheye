@@ -146,7 +146,7 @@ async function displayStickyInfos(photographer) {
     `
 }
 
-async function handleMediaModalNavigation(mediaList) {
+async function handleMediaModalButtons(mediaList) {
     const modal = document.getElementById("media_modal");
     const modalContent = document.getElementById("middle_part");
     const modalClose = document.getElementById("close_button");
@@ -158,39 +158,34 @@ async function handleMediaModalNavigation(mediaList) {
     })
 
     modalNext.addEventListener("click", () => {
-        const currentMediaId = modalContent.firstChild.getAttribute("id");
-        const currentMediaIndex = mediaList.findIndex(media => media.id == currentMediaId);
-        let nextMedia = mediaList[0]
-        if (currentMediaIndex == mediaList.length - 1) {
-            nextMedia = mediaList[0];
-        } else {
-            nextMedia = mediaList[currentMediaIndex + 1];
-        }
-
-        if (nextMedia.image) {
-            modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
-        } else if (nextMedia.video) {
-            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
-        }
+        handleNavigation(true)
     })
 
     modalPrev.addEventListener("click", () => {
+        handleNavigation(false);
+    })
+
+    async function handleNavigation(increment) {
         const currentMediaId = modalContent.firstChild.getAttribute("id");
         const currentMediaIndex = mediaList.findIndex(media => media.id == currentMediaId);
         let nextMedia = mediaList[0]
-        if (currentMediaIndex == 0) {
-            nextMedia = mediaList[mediaList.length - 1];
-        } else {
-            nextMedia = mediaList[currentMediaIndex - 1];
-        }
 
+        if (increment) {
+            nextMedia = currentMediaIndex == mediaList.length - 1 ? mediaList[0] : mediaList[currentMediaIndex + 1];
+        } else {
+            nextMedia = currentMediaIndex == 0 ? mediaList[mediaList.length - 1] : mediaList[currentMediaIndex - 1];
+        }
+    
         if (nextMedia.image) {
             modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
         } else if (nextMedia.video) {
             modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
         }
-    })
+    }
 }
+
+
+
 
 
 async function init() {
@@ -203,7 +198,7 @@ async function init() {
     displayDropdown(["Popularité", "Date", "Titre"]);
     displayMiniatures(mediaList);
     displayStickyInfos(photographer);
-    handleMediaModalNavigation(mediaList);
+    handleMediaModalButtons(mediaList);
 }
 
 async function initMediaList(medias) {
