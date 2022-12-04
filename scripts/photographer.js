@@ -56,15 +56,40 @@ function initContactModal() {
 
     btnSubmit.addEventListener("click", (event) => {
         event.preventDefault();
+        const firstNameInput =  document.getElementById("contact_firstName");
+        const lastNameInput = document.getElementById("contact_lastName");
+        const emailInput = document.getElementById("contact_email");
+        const messageInput = document.getElementById("contact_message");
+       
         const data = {
-            firstName: document.getElementById("contact_firstName").value,
-            lastName: document.getElementById("contact_lastName").value,
-            email: document.getElementById("contact_email").value,
-            message: document.getElementById("contact_message").value
+            firstName: firstNameInput.value,
+            lastName: lastNameInput.value,
+            email: emailInput.value,
+            message: messageInput.value
         }
-        console.log(data)
-
+        if (isValidInput(firstNameInput) && isValidInput(lastNameInput) && isValidEmail(emailInput) && isValidInput(messageInput)) {
+            console.log(data)
+        }
     })
+
+    function isValidInput(input) {
+        if (input.value !== "") {
+            input.style.border = "none"
+            return true;
+        } else {
+            input.style.border = "5px solid red"
+            return false;
+        }
+    }
+    function isValidEmail(emailInput) {
+        if (emailInput != null && (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/).test(emailInput.value)) {
+          emailInput.style.border = "none"
+          return true
+        } else {
+          emailInput.style.border = "5px solid red"
+          return false
+        }
+      }
 }
 
 async function displayDropdown(dropdownOptions) {
