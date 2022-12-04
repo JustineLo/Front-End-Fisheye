@@ -90,6 +90,7 @@ video {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
+    color: var(--primary);
 }
 
 .picture-infos h3 {
@@ -224,6 +225,7 @@ form textarea {
 #media_modal_content {
     padding: 35px;
     display: flex;
+    gap: 20px;
 }
 
 #media_modal_content button {
@@ -231,21 +233,15 @@ form textarea {
 	border: none;
 	padding: 0;
 	cursor: pointer;
-    font-size: 30px;
+    font-size: 40px;
     color: var(--primary);
 }
 
-.fa-xmark {
-    position: relative;
-    top: 0;
-    right: 0;
-    color: var(--primary);
-    font-size: 30px;
-}
 
 #middle_part img {
-    width: 40vw;
-    height: 40vw;
+    width: 45vw;
+    height: 45vw;
+    object-fit: cover;
 }
 
 
@@ -262,3 +258,16 @@ form textarea {
     height: 100%;
     width: 100%;
 }
+
+#right_part .fa-xmark {
+    position: absolute;
+    top: 35px;
+    right: 25%;
+}
+
+.media-title {
+    color: var(--primary);
+    font-size: 20px;
+}
+
+

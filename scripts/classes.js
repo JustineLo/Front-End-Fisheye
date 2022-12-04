@@ -73,8 +73,6 @@ export class Image {
         pictureCard.appendChild(pictureInfos);
 
         pictureButton.addEventListener("click", (event) => {
-            const modal = document.getElementById("media_modal");
-            modal.style.display = "flex";
             displayModalMedia(pictureButton);
         })
 
@@ -140,6 +138,10 @@ export class Video {
 }
 
 export async function displayModalMedia(pictureButton) {
-    const modal = document.getElementById("middle_part");
-    modal.innerHTML = pictureButton.innerHTML;
+    const modal = document.getElementById("media_modal");
+    modal.style.display = "flex";
+    const middlePart = document.getElementById("middle_part");
+    const currentMedia = mediaList.find(media => media.id == pictureButton.firstChild.id);
+    middlePart.innerHTML = pictureButton.innerHTML + `<div class="media-title">${currentMedia.title}</div>`;
+    
 }

@@ -177,9 +177,12 @@ async function handleMediaModalButtons(mediaList) {
         }
     
         if (nextMedia.image) {
-            modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}" />`
+            modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}"/>
+            <div class="picture-infos">${nextMedia.title}</div>
+            `
         } else if (nextMedia.video) {
-            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>`
+            modalContent.innerHTML = `<video src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}" id="${nextMedia.id}"></video>
+            <div class="picture-infos">${nextMedia.title}</div>`
         }
     }
 }
