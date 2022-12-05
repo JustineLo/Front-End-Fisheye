@@ -203,13 +203,13 @@ async function handleMediaModalButtons(mediaList) {
     
         if (nextMedia.image) {
             modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}"/>
-            <div class="picture-infos">${nextMedia.title}</div>
+            <div class="media-title">${nextMedia.title}</div>
             `
         } else if (nextMedia.video) {
             modalContent.innerHTML = `<video controls id="${nextMedia.id}">
             <source src="/../../assets/videos/${nextMedia.video}" type="video/mp4" alt="${nextMedia.title}"></source>
             </video>
-            <div class="picture-infos">${nextMedia.title}</div>`
+            <div class="media-title">${nextMedia.title}</div>`
         }
     }
 }

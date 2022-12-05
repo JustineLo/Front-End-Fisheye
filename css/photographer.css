@@ -48,16 +48,28 @@ main {
     gap: 10px;
     margin: 20px 0;
     font-weight: bold;
+    align-items: center;
 }
 
-.dropdown {
-    all: unset;
+select {
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    gap: 15%;
+}
+
+#dropdown * {
+    background-color: var(--primary);
+    color: white;
 }
 
 #photograph-miniatures {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
     color: var(--primary);
     width: 100%;
     gap: 5%;
@@ -268,6 +280,7 @@ form textarea {
 .media-title {
     color: var(--primary);
     font-size: 20px;
+    font-weight: bold;
 }
 
 
