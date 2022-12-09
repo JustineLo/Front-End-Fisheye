@@ -44,11 +44,16 @@ function initContactModal() {
     const btnSubmit = document.getElementById("contact_submit");
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
+    const firstNameInput =  document.getElementById("contact_firstName");
+    const lastNameInput = document.getElementById("contact_lastName");
+    const emailInput = document.getElementById("contact_email");
+    const messageInput = document.getElementById("contact_message");
 
     modalBtn.addEventListener("click", () => {
         modal.style.display = "block";
         modal.setAttribute("aria-hidden", "false")
         main.setAttribute("aria-hidden", "true")
+        firstNameInput.focus()
     })
 
     btnClose.addEventListener("click", () => {
@@ -60,10 +65,6 @@ function initContactModal() {
 
     btnSubmit.addEventListener("click", (event) => {
         event.preventDefault();
-        const firstNameInput =  document.getElementById("contact_firstName");
-        const lastNameInput = document.getElementById("contact_lastName");
-        const emailInput = document.getElementById("contact_email");
-        const messageInput = document.getElementById("contact_message");
        
         const data = {
             firstName: firstNameInput.value,
