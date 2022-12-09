@@ -42,15 +42,19 @@ function initContactModal() {
     const modalBtn = document.getElementById("contact_button");
     const btnClose = document.getElementById("contact_close");
     const btnSubmit = document.getElementById("contact_submit");
+    const modal = document.getElementById("contact_modal");
+    const main = document.getElementById("main");
 
     modalBtn.addEventListener("click", () => {
-        const modal = document.getElementById("contact_modal");
         modal.style.display = "block";
+        modal.setAttribute("aria-hidden", "false")
+        main.setAttribute("aria-hidden", "true")
     })
 
     btnClose.addEventListener("click", () => {
-        const modal = document.getElementById("contact_modal");
         modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true")
+        main.setAttribute("aria-hidden", "false")
     })
 
 
@@ -101,7 +105,7 @@ async function displayDropdown(dropdownOptions) {
     dropdownLabelDOM.setAttribute("for", "dropdown");
     dropdownLabelDOM.innerHTML = "Trier par";
 
-    dropdownOptions.forEach((option) => {
+    dropdownOptions.forEach((option) => {   
         dropdownDOM.innerHTML = dropdownDOM.innerHTML + `<option value="${option}">${option}</option>`
     })
 
@@ -177,10 +181,14 @@ async function handleMediaModalButtons(mediaList) {
     const modalClose = document.getElementById("close_button");
     const modalNext = document.getElementById("next_button");
     const modalPrev = document.getElementById("prev_button");
+    const main = document.querySelector("main");
 
     modalClose.addEventListener("click", () => {
         modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true")
+        main.setAttribute("aria-hidden", "false")
     })
+
 
     modalNext.addEventListener("click", () => {
         handleNavigation(true)
