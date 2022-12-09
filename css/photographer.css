@@ -171,6 +171,11 @@ footer {
     margin: auto;
 }
 
+#contact_close {
+    background: none;
+    border: none;
+}
+
 .modal header {
     justify-content: space-between;
     width: 100%;
