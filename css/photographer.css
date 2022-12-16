@@ -116,6 +116,12 @@ video {
     cursor: pointer;
 }
 
+.picture-likes button {
+    background: none;
+    border: none;
+    color: var(--primary);
+}
+
 footer {
     position: fixed;
     bottom: 0;

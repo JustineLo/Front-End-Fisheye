@@ -10,7 +10,7 @@ async function getAllPhotographersData() {
 }
 
 
-async function displayData(photographersData) {
+function displayData(photographersData) {
     const photographersSection = document.getElementById("photographer-section");
     photographersData.forEach((photographerData) => {
         const photographer = new Photographer(photographerData);
