@@ -49,7 +49,6 @@ function initContactModal(name) {
     const emailInput = document.getElementById("contact_email");
     const messageInput = document.getElementById("contact_message");
     const photographerName = document.getElementById("photographer-name-contact");
-    let isFormValid = true;
 
     modalBtn.addEventListener("click", () => {
         modal.style.display = "flex";
@@ -69,7 +68,8 @@ function initContactModal(name) {
 
     btnSubmit.addEventListener("click", (event) => {
         event.preventDefault();
-       
+        let isFormValid = true;
+        
         const data = {
             firstName: firstNameInput.value,
             lastName: lastNameInput.value,
