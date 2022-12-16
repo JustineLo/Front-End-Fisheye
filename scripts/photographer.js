@@ -35,10 +35,10 @@ async function displayHeader(photographer) {
         <button id="contact_button">Contactez-moi</button>
         ${photographer.getUserPictureDOM()}
     `
-    initContactModal();
+    initContactModal(photographer.name);
 }
 
-function initContactModal() {
+function initContactModal(name) {
     const modalBtn = document.getElementById("contact_button");
     const btnClose = document.getElementById("contact_close");
     const btnSubmit = document.getElementById("contact_submit");
@@ -48,9 +48,11 @@ function initContactModal() {
     const lastNameInput = document.getElementById("contact_lastName");
     const emailInput = document.getElementById("contact_email");
     const messageInput = document.getElementById("contact_message");
+    const photographerName = document.getElementById("photographer-name-contact");
+    let isFormValid = true;
 
     modalBtn.addEventListener("click", () => {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         modal.setAttribute("aria-hidden", "false")
         main.setAttribute("aria-hidden", "true")
         firstNameInput.focus()
@@ -62,6 +64,8 @@ function initContactModal() {
         main.setAttribute("aria-hidden", "false")
     })
 
+    photographerName.innerHTML = name;
+
 
     btnSubmit.addEventListener("click", (event) => {
         event.preventDefault();
@@ -72,29 +76,67 @@ function initContactModal() {
             email: emailInput.value,
             message: messageInput.value
         }
-        if (isValidInput(firstNameInput) && isValidInput(lastNameInput) && isValidEmail(emailInput) && isValidInput(messageInput)) {
+        if (!isValidInput(firstNameInput)) {
+            isFormValid = false;
+        }
+        if (!isValidInput(lastNameInput)) {
+            isFormValid = false;
+        }
+        if (!isValidEmail(emailInput)) {
+            isFormValid = false;
+        }
+        if (!isValidInput(messageInput)) {
+            isFormValid = false;
+        }
+
+        if (isFormValid) {
             console.log(data)
         }
+
     })
 
     function isValidInput(input) {
         if (input.value !== "") {
+            const errorMessage = document.getElementById(`error-message-${input.id}`)
+            if (errorMessage) {
+                errorMessage.remove()
+            }
             input.style.border = "none"
             return true;
         } else {
+            if (document.getElementById(`error-message-${input.id}`) == null) {
+                const errorMessage = document.createElement("p")
+                errorMessage.setAttribute("id", `error-message-${input.id}`)
+                errorMessage.style.color = "red"
+                errorMessage.innerHTML = "Veuillez remplir ce champ"
+                input.insertAdjacentElement("afterend", errorMessage)
+            }
             input.style.border = "5px solid red"
+            
             return false;
         }
     }
     function isValidEmail(emailInput) {
         if (emailInput != null && (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/).test(emailInput.value)) {
+            const errorMessage = document.getElementById(`error-message-email`)
+            if (errorMessage) {
+                errorMessage.remove()
+            }
           emailInput.style.border = "none"
           return true
         } else {
-          emailInput.style.border = "5px solid red"
-          return false
+            if (document.getElementById(`error-message-email`) == null) {
+                const errorMessage = document.createElement("p")
+                errorMessage.setAttribute("id", `error-message-email`)
+                errorMessage.style.color = "red"
+                errorMessage.innerHTML = "Veuillez entrer une adresse email valide"
+                emailInput.insertAdjacentElement("afterend", errorMessage)
+            }
+            emailInput.style.border = "5px solid red"
+            return false
         }
       }
+     
 }
 
 async function displayDropdown(dropdownOptions) {

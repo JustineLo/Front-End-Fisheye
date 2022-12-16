@@ -136,16 +136,19 @@ footer {
 
 #contact_button,
 #contact_submit {
-    font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
     border: none;
     background-color: var(--primary);
     border-radius: 5px;
     cursor: pointer;
+}
+
+#contact_button {
+    width: 170px;
+    height: 70px;
+    font-size: 18px;
 }
 
 #contact_modal {
@@ -155,8 +158,10 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 80vh;
     width: 80vw;
+    height: 100vh;
+    align-content: center;
+
 }
 
 .modal {
@@ -179,6 +184,7 @@ footer {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    padding-bottom: 2%;
 }
 
 .modal header img {
@@ -186,9 +192,14 @@ footer {
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 2.5rem;
     font-weight: normal;
-    text-align: center;
+    margin: 0;
+}
+
+.contact_title {
+    display: flex;
+    flex-direction: column;
 }
 
 form {
@@ -200,7 +211,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 150%;
 }
 
 form div {
@@ -211,18 +222,12 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     border: none;
     border-radius: 5px;
-    font-size: 30px;
-}
-
-form textarea {
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    font-size: 30px;
+    font-size: 120%;
+    padding: 1%;
 }
 
 #media_modal {
