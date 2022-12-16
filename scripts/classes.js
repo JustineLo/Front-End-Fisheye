@@ -66,7 +66,7 @@ export class Image {
             <p class="picture-likes">
                 <span id="likes-number-${this.media.id}">${this.media.likes}</span>
                 <button id="heart-icon-${this.media.id}" aria-label="liker le media">
-                    <i class="fas fa-heart"></i>
+                    <em class="fas fa-heart"></em>
                 </button>
             </p>
         `
@@ -112,7 +112,7 @@ export class Video {
             <p class="picture-likes">
                 <span id="likes-number-${this.media.id}">${this.media.likes}</span>
                 <button id="heart-icon-${this.media.id}" aria-label="liker le media">
-                    <i class="fas fa-heart"></i>
+                    <em class="fas fa-heart"></em>
                 </button>
             </p>
         `

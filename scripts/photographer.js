@@ -210,7 +210,7 @@ async function displayStickyInfos(photographer) {
     footer.innerHTML = `
         <span class="total-likes">
             <p id="total-likes-number">${totalLikes}</p>
-            <i class="fas fa-heart" aria-label="nombre de likes"></i>
+            <em class="fas fa-heart" aria-label="nombre de likes"></em>
         </span>
         <span class="price">
             ${photographer.price}€/jour
