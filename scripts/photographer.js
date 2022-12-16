@@ -225,13 +225,23 @@ async function handleMediaModalButtons(mediaList) {
     const modalNext = document.getElementById("next_button");
     const modalPrev = document.getElementById("prev_button");
     const main = document.querySelector("main");
+    window.onkeydown = handleKeyboardNavigation;
 
     modalClose.addEventListener("click", () => {
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true")
-        main.setAttribute("aria-hidden", "false")
+        handleCloseModal();
     })
 
+
+    function handleKeyboardNavigation(e) {
+        if (e.keyCode === 39) {
+            handleNavigation(true);
+        } else if (e.keyCode === 37) {
+            handleNavigation(false);
+        } else if (e.keyCode === 27) {
+            handleCloseModal();
+        }
+        
+    }
 
     modalNext.addEventListener("click", () => {
         handleNavigation(true)
@@ -262,6 +272,12 @@ async function handleMediaModalButtons(mediaList) {
             </video>
             <div class="media-title">${nextMedia.title}</div>`
         }
+    }
+
+    function handleCloseModal() {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true")
+        main.setAttribute("aria-hidden", "false")
     }
 }
 
