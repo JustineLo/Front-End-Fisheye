@@ -69,7 +69,7 @@ function initContactModal(name) {
     btnSubmit.addEventListener("click", (event) => {
         event.preventDefault();
         let isFormValid = true;
-        
+
         const data = {
             firstName: firstNameInput.value,
             lastName: lastNameInput.value,
@@ -294,4 +294,6 @@ async function initMediaList(medias) {
     })
 }
 
-init()
+if (document.location.pathname === "/photographer.html") {
+    init()
+}
