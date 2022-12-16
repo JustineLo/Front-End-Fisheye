@@ -151,10 +151,10 @@ export async function displayModalMedia(mediaDOM) {
     modal.style.display = "flex";
     const middlePart = document.getElementById("middle_part");
     const currentMedia = mediaList.find(media => media.id == mediaDOM.getAttribute("id"));
-    const nextButton = document.getElementById("next_button"); 
+    const closeButton = document.getElementById("close_button"); 
     middlePart.innerHTML = mediaDOM.outerHTML + `<div class="media-title">${currentMedia.title}</div>`;
 
     modal.setAttribute("aria-hidden", "false")
     main.setAttribute("aria-hidden", "true")
-    nextButton.focus();
+    closeButton.focus();
 }
