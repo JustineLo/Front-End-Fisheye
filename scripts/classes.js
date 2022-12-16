@@ -65,7 +65,7 @@ export class Image {
         pictureInfos.innerHTML = `<h3>${this.media.title}</h3>
             <p class="picture-likes">
                 <span id="likes-number-${this.media.id}">${this.media.likes}</span>
-                <button id="heart-icon-${this.media.id}">
+                <button id="heart-icon-${this.media.id}" aria-label="liker le media">
                     <i class="fas fa-heart"></i>
                 </button>
             </p>
@@ -111,7 +111,7 @@ export class Video {
         videoInfos.innerHTML = `<h3>${this.media.title}</h3>
             <p class="picture-likes">
                 <span id="likes-number-${this.media.id}">${this.media.likes}</span>
-                <button id="heart-icon-${this.media.id}">
+                <button id="heart-icon-${this.media.id}" aria-label="liker le media">
                     <i class="fas fa-heart"></i>
                 </button>
             </p>
