@@ -21,15 +21,15 @@ export class Photographer {
     }
 
     getUserLocationDOM() {
-        return `<p>${this.city}, ${this.country}</p>`;
+        return `<p class="user-location">${this.city}, ${this.country}</p>`;
     }
 
     getUserTaglineDOM() {
-        return `<p>${this.tagline}</p>`;
+        return `<p class="user-tagline">${this.tagline}</p>`;
     }
 
     getUserPriceDOM() {
-        return `<p>${this.price}€/jour</p>`;
+        return `<p class="user-price">${this.price}€/jour</p>`;
     }
 
     getUserCardDOM() {

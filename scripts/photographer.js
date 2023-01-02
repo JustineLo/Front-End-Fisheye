@@ -91,6 +91,7 @@ function initContactModal(name) {
 
         if (isFormValid) {
             console.log(data)
+            modal.style.display = "none";
         }
 
     })

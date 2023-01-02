@@ -1,5 +1,8 @@
 main {
     margin: 0 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 #photograph-header {
@@ -69,14 +72,14 @@ select {
 #photograph-miniatures {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
     color: var(--primary);
     width: 100%;
-    gap: 5%;
+    gap: 15px;
+    align-self: center;
 }
 
 .media-card {
-    width: 25%;
+    width: 350px;
     height: 300px;
 }
 
@@ -94,7 +97,7 @@ video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .picture-infos {
@@ -270,6 +273,7 @@ form input, form textarea {
     width: 45vw;
     height: 45vw;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 
@@ -299,4 +303,10 @@ form input, form textarea {
     font-weight: bold;
 }
 
-
+@media (min-width: 1440px) {
+    #photograph-miniatures {
+        gap: 10%;
+        width: 80%;
+    }
+    
+}
