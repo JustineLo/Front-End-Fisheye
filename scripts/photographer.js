@@ -25,7 +25,7 @@ async function getMedias() {
 
 async function displayHeader(photographer) {
   const headerDOM = document.getElementById("photograph-header");
-
+  console.log("hello");
   headerDOM.innerHTML = `
         <div class="photographer-infos">
             ${photographer.getUserNameDOM()}
