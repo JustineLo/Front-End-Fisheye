@@ -13,7 +13,7 @@ export class Photographer {
   }
 
   getUserPictureDOM() {
-    return `<img src="../../assets/photographers/${this.portrait}" class="avatar" alt="${this.portrait}" />`;
+    return `<img src="./assets/photographers/${this.portrait}" class="avatar" alt="${this.portrait}" />`;
   }
 
   getUserNameDOM() {
