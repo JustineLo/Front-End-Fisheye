@@ -1,70 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
+    <script
+      src="https://kit.fontawesome.com/cd83c24a15.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
-  <script src="https://kit.fontawesome.com/cd83c24a15.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <header>
-    <a href ="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
-    </a>
-  </header>
-  <main id="main" aria-hidden="false">
-    <section id="photograph-header"></section>
-    <section id="dropdown-section"></section>
-    <section id="photograph-miniatures"></section>
-  </main>
-  <footer></footer>
-  <div id="contact_modal" aria-hidden="true" role="dialog">
-    <div class="modal">
-      <header>
-        <div class="contact_title">
-          <h2>Contactez-moi</h2>
-          <h2 id="photographer-name-contact"></h2>
-        </div>
-        <button id="contact_close" aria-label="Fermer le formulaire de contact"><img src="assets/icons/close.svg" alt="close modal icon"/></button>
-      </header>
-      <form>
-        <div>
-          <label for="contact_firstName">Prénom</label>
-          <input id="contact_firstName" name="contact_firstName" required/>
-          <label for="contact_lastName">Nom</label>
-          <input id="contact_lastName" name="contact_lastName" required/>
-          <label for="contact_email">Email</label>
-          <input id="contact_email" name="contact_email" required/>
-          <label for="contact_message">Message</label>
-          <textarea id="contact_message" name="contact_message" rows="5" required></textarea>
-        </div>
-        <button id="contact_submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
-  <div id="media_modal" aria-hidden="true" role=”dialog”>
-    <div id="media_modal_content">
-      <div id="left_part">
-        <button id="prev_button" aria-label="media précédent">
-          <em class="fa-sharp fa-solid fa-chevron-left"></em>
-        </button>
-      </div>
-      <div id="middle_part"></div>
-      <div id="right_part">
-        <button id="close_button" aria-label="Fermer la modale">
-          <em class="fa-solid fa-xmark"></em>
-        </button>
-        <button id="next_button" aria-label="media suivant">
-          <em class="fa-sharp fa-solid fa-chevron-right"></em>
-        </button>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
+      </a>
+    </header>
+    <main id="main" aria-hidden="false">
+      <section id="photograph-header"></section>
+      <section id="dropdown-section"></section>
+      <section id="photograph-miniatures"></section>
+    </main>
+    <footer></footer>
+    <div id="contact_modal" aria-hidden="true" role="dialog">
+      <div class="modal">
+        <header>
+          <div class="contact_title">
+            <h2>Contactez-moi</h2>
+            <h2 id="photographer-name-contact"></h2>
+          </div>
+          <button
+            id="contact_close"
+            aria-label="Fermer le formulaire de contact"
+          >
+            <img src="./assets/icons/close.svg" alt="close modal icon" />
+          </button>
+        </header>
+        <form>
+          <div>
+            <label for="contact_firstName">Prénom</label>
+            <input id="contact_firstName" name="contact_firstName" required />
+            <label for="contact_lastName">Nom</label>
+            <input id="contact_lastName" name="contact_lastName" required />
+            <label for="contact_email">Email</label>
+            <input id="contact_email" name="contact_email" required />
+            <label for="contact_message">Message</label>
+            <textarea
+              id="contact_message"
+              name="contact_message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button id="contact_submit">Envoyer</button>
+        </form>
       </div>
     </div>
-  </div>
-  <script type="module" src="/scripts/photographer.js"></script>
-</body>
-
+    <div id="media_modal" aria-hidden="true" role="”dialog”">
+      <div id="media_modal_content">
+        <div id="left_part">
+          <button id="prev_button" aria-label="media précédent">
+            <em class="fa-sharp fa-solid fa-chevron-left"></em>
+          </button>
+        </div>
+        <div id="middle_part"></div>
+        <div id="right_part">
+          <button id="close_button" aria-label="Fermer la modale">
+            <em class="fa-solid fa-xmark"></em>
+          </button>
+          <button id="next_button" aria-label="media suivant">
+            <em class="fa-sharp fa-solid fa-chevron-right"></em>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/scripts/photographer.js"></script>
+  </body>
 </html>

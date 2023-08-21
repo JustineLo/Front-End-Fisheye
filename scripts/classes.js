@@ -58,7 +58,7 @@ export class Image {
 
     const pictureButton = document.createElement("button");
     pictureButton.setAttribute("class", "media-button");
-    pictureButton.innerHTML = `<img src="/../../assets/images/${this.media.image}" alt="${this.media.title}" id="${this.media.id}" />`;
+    pictureButton.innerHTML = `<img src="./../../assets/images/${this.media.image}" alt="${this.media.title}" id="${this.media.id}" />`;
 
     const pictureInfos = document.createElement("div");
     pictureInfos.setAttribute("class", "picture-infos");
@@ -90,7 +90,6 @@ export class Image {
         this.media.likes;
       updateTotalLikesDOM();
     });
-    
   }
 }
 

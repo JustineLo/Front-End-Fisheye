@@ -271,7 +271,7 @@ async function handleMediaModalButtons(mediaList) {
     }
 
     if (nextMedia.image) {
-      modalContent.innerHTML = `<img src="/../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}"/>
+      modalContent.innerHTML = `<img src="./../../assets/images/${nextMedia.image}" alt="${nextMedia.title}" id="${nextMedia.id}"/>
             <div class="media-title">${nextMedia.title}</div>
             `;
     } else if (nextMedia.video) {
