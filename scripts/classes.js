@@ -83,12 +83,14 @@ export class Image {
 
   handleLikes() {
     const clickHeart = document.getElementById(`heart-icon-${this.media.id}`);
+
     clickHeart.addEventListener("click", async () => {
       this.media.likes++;
       document.getElementById(`likes-number-${this.media.id}`).innerHTML =
         this.media.likes;
       updateTotalLikesDOM();
     });
+    
   }
 }
 

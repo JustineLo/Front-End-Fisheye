@@ -6,7 +6,7 @@ let id = params.get("id");
 export let mediaList = [];
 
 async function getPhotographerData() {
-  const response = await fetch("/data/photographers.json")
+  const response = await fetch("./data/photographers.json")
     .then((response) => response.json())
     .then((data) => data.photographers)
     .then((data) => data.find((photographer) => photographer.id == id))
@@ -15,7 +15,7 @@ async function getPhotographerData() {
 }
 
 async function getMedias() {
-  const response = await fetch("/data/photographers.json")
+  const response = await fetch("./data/photographers.json")
     .then((response) => response.json())
     .then((data) => data.media)
     .then((data) => data.filter((media) => media.photographerId == id))
