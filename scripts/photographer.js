@@ -318,3 +318,5 @@ if (document.location.pathname === "/photographer.html") {
   console.log("hello ??");
   init();
 }
+
+console.log(document.location.pathname);
