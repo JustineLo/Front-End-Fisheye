@@ -25,7 +25,6 @@ async function getMedias() {
 
 async function displayHeader(photographer) {
   const headerDOM = document.getElementById("photograph-header");
-  console.log("hello");
   headerDOM.innerHTML = `
         <div class="photographer-infos">
             ${photographer.getUserNameDOM()}
@@ -290,6 +289,7 @@ async function handleMediaModalButtons(mediaList) {
 }
 
 async function init() {
+  console.log("init");
   const photographerData = await getPhotographerData();
   const photographer = new Photographer(photographerData);
 
@@ -315,5 +315,6 @@ async function initMediaList(medias) {
 }
 
 if (document.location.pathname === "/photographer.html") {
+  console.log("hello ??");
   init();
 }
